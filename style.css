@@ -1,0 +1,286 @@
+:root {
+	/* Font face */
+	@font-face {
+		font-family: 'Norse';
+		src: url('/src/font/NorseBold.otf') format('opentype');
+	}
+
+	/* Padding left */
+	--margin: 3rem;
+
+	/* Colors */
+	--olive: #596d48;
+	--olive-hover: rgb(90, 128, 20);
+	--white: white;
+	--light-grey: rgb(207, 207, 207);
+	--blue: rgb(4, 4, 154);
+	--red: rgb(191, 0, 0);
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* Prevent font size inflation */
+html {
+	-moz-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* Set core body defaults */
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+/* A elements that don't have a class get default styles */
+a {
+	text-decoration: none;
+	font-weight: 700;
+}
+
+a:visited {
+	color: var(--olive);
+}
+
+a:hover {
+	color: var(--olive-hover);
+}
+
+h1 {
+	display: block;
+	font-family: 'Norse', sans-serif;
+	font-size: 4rem;
+	padding: 0;
+	margin: 0;
+	align-self: end;
+}
+
+h2 {
+	margin: 0;
+	font-size: 1.4rem;
+	margin: 0 var(--margin);
+}
+
+p {
+	margin: 0;
+	text-wrap: balance;
+	max-width: 64rem;
+	font-size: 1.5rem;
+}
+
+hr {
+	border: 1px solid var(--light-grey);
+	box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.5);
+	width: 100%;
+}
+
+span {
+	margin: 0 var(--margin);
+}
+
+input[type='number'] {
+	-webkit-appearance: textfield;
+	-moz-appearance: textfield;
+	appearance: textfield;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+}
+
+input::placeholder {
+	background-color: transparent;
+}
+
+input[type='checkbox'] {
+	margin: 0;
+}
+
+label {
+	font-size: 0.8rem;
+	margin-bottom: 0.3rem;
+}
+
+button {
+	margin: 0 var(--margin);
+}
+
+/* utility classes */
+.flex {
+	display: flex;
+	width: 100%;
+	gap: 3rem;
+}
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
+	max-width: 18rem;
+	width: 100%;
+}
+
+/* Input Field */
+.input {
+	padding: 0.4rem;
+	border-radius: 0.4rem;
+	border: 1px solid var(--light-grey);
+	transition: 0.5s;
+	outline: none;
+	width: 100%;
+}
+
+.input:focus {
+	border-color: var(--blue);
+}
+
+.input-error {
+	border: 1px solid var(--red);
+}
+
+/* Styling for the error message */
+.error-message {
+	display: none; /* Hide error message by default */
+	color: var(--red);
+	font-size: 0.8rem;
+	margin: 1rem 0;
+}
+
+/* Header */
+.header {
+	margin: var(--margin);
+}
+
+/* Content Wrapper */
+.content__wrapper {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-areas:
+		'left right right'
+		'left right right';
+
+	margin-bottom: 2rem;
+
+	@media only screen and (max-width: 48rem) {
+		grid-template-columns: repeat(1, 1fr);
+		grid-template-areas:
+			'left '
+			'right';
+	}
+}
+
+.content__left {
+	display: flex;
+	justify-content: center;
+	color: white;
+	position: relative;
+	grid-area: left;
+}
+
+.bg-image {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	z-index: -1;
+
+	@media only screen and (max-width: 48rem) {
+		height: 25rem;
+	}
+}
+
+.logo__wrapper {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	@media only screen and (max-width: 48rem) {
+		top: 50%;
+	}
+}
+
+.logo__wrapper-bg {
+	position: absolute;
+	background: linear-gradient(hsla(0, 0%, 32%, 0.3)) center;
+	height: 6rem;
+	width: 100%;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: -1;
+
+	@media only screen and (max-width: 48rem) {
+		top: 50%;
+	}
+}
+
+.logo-odin {
+	width: 4rem;
+}
+
+.content__right {
+	grid-area: right;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+/* Form Wrapper */
+.form__wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	margin-bottom: 2rem;
+}
+
+.form {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	margin: var(--margin);
+	gap: 1rem;
+
+	@media only screen and (max-width: 26.5rem) {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+
+.form-btn {
+	width: fit-content;
+	padding: 0.8rem 2.6rem;
+	color: var(--white);
+	background-color: var(--olive);
+	border: transparent;
+	border-radius: 0.4rem;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.form-btn:hover {
+	background-color: var(--olive-hover);
+}
+
+/* Show Password */
+.show-password {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	margin-top: 1rem;
+}
