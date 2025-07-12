@@ -50,6 +50,7 @@ body {
 /* A elements that don't have a class get default styles */
 a {
 	text-decoration: none;
+	color: var(--olive);
 	font-weight: 700;
 }
 
